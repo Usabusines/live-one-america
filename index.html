@@ -9,6 +9,43 @@
   :root { --navy: #0d1b2a; --gold: #c9a84c; --gold-light: #e8c97a; --cream: #faf8f3; --text: #1a1a2e; --muted: #6b7280; --border: #e5e0d5; --white: #ffffff; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
+  
+  /* VIDEO TOPO */
+  .video-topo {
+    background: var(--navy);
+    padding: 28px 20px 24px;
+    text-align: center;
+  }
+  .video-topo-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+    border: 1.5px solid rgba(201,168,76,0.25);
+    /* Aspect ratio para Shorts (9:16) */
+    padding-bottom: 0;
+  }
+  .video-wrapper iframe {
+    display: block;
+    width: 100%;
+    height: 600px;
+    border: none;
+  }
+  @media (max-width: 400px) {
+    .video-wrapper iframe { height: 480px; }
+  }
+
   .hero { background: var(--navy); padding: 52px 24px 44px; text-align: center; position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; background: radial-gradient(circle, rgba(201,168,76,0.13) 0%, transparent 70%); pointer-events: none; }
   .hero-badge { display: inline-block; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.35); color: var(--gold-light); font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 20px; }
@@ -31,200 +68,257 @@
   .field input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text); background: var(--white); transition: border-color 0.2s, box-shadow 0.2s; outline: none; }
   .field input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.1); }
   .radio-group { display: flex; flex-direction: column; gap: 10px; }
-  .radio-card { display: flex; align-items: flex-start; gap: 12px; padding: 13px 15px; border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer; transition: border-color 0.2s, background 0.2s; background: var(--white); }
-  .radio-card:hover { border-color: var(--gold-light); }
-  .radio-card.selected { border-color: var(--gold); background: rgba(201,168,76,0.06); }
+  .radio-card { display: flex; align-items: center; gap: 12px; padding: 13px 15px; border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer; transition: border-color 0.2s, background 0.2s; background: var(--white); }
+  .radio-card:hover { border-color: var(--gold-light); background: rgba(201,168,76,0.06); }
+  .radio-card.selected { border-color: var(--gold); background: rgba(201,168,76,0.08); }
   .radio-indicator { width: 18px; height: 18px; border: 2px solid var(--border); border-radius: 50%; flex-shrink: 0; margin-top: 2px; transition: all 0.2s; position: relative; }
   .radio-card.selected .radio-indicator { border-color: var(--gold); background: var(--gold); }
   .radio-card.selected .radio-indicator::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 6px; height: 6px; background: white; border-radius: 50%; }
   .radio-text strong { display: block; font-size: 14px; font-weight: 500; color: var(--text); }
   .radio-text small { font-size: 12px; color: var(--muted); margin-top: 2px; display: block; }
+  .btn { display: block; width: 100%; padding: 15px 24px; border: none; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; cursor: pointer; transition: all 0.2s; margin-top: 24px; }
+  .btn-primary { background: var(--gold); color: var(--navy); }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(201,168,76,0.3); }
+  .btn-secondary { background: transparent; color: var(--muted); border: 1.5px solid var(--border); margin-top: 12px; }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--text); }
   .event-box { background: var(--navy); border-radius: 12px; padding: 22px 20px; margin-bottom: 24px; position: relative; overflow: hidden; }
   .event-box::before { content: ''; position: absolute; top: -40px; right: -40px; width: 130px; height: 130px; background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%); }
   .event-box-tag { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(201,168,76,0.7); margin-bottom: 10px; }
-  .event-box-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 6px; line-height: 1.3; }
-  .event-box-date { font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 16px; }
-  .event-speakers { display: flex; flex-direction: column; gap: 9px; }
-  .speaker { display: flex; align-items: center; gap: 10px; }
-  .speaker-icon { width: 34px; height: 34px; border-radius: 50%; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
-  .speaker-info strong { display: block; font-size: 13px; font-weight: 500; color: var(--white); }
-  .speaker-info span { font-size: 11px; color: rgba(255,255,255,0.45); }
-  .oas-link { display: flex; align-items: center; gap: 10px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); border-radius: 10px; padding: 14px 16px; margin-bottom: 20px; text-decoration: none; transition: background 0.2s; }
-  .oas-link:hover { background: rgba(201,168,76,0.14); }
-  .oas-link-icon { font-size: 20px; }
-  .oas-link-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--gold); }
-  .oas-link-text span { font-size: 12px; color: var(--muted); }
-  .price-row { display: flex; align-items: center; justify-content: space-between; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25); border-radius: 8px; padding: 12px 16px; margin-bottom: 24px; }
-  .price-label { font-size: 13px; color: var(--muted); }
-  .price-value { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--gold); }
-  .price-value sup { font-size: 12px; font-family: 'DM Sans', sans-serif; vertical-align: super; }
-  .btn { width: 100%; padding: 15px; background: var(--gold); color: var(--navy); border: none; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.2s, transform 0.1s; margin-top: 8px; display: block; text-align: center; }
-  .btn:hover { background: var(--gold-light); transform: translateY(-1px); }
-  .btn-ghost { background: transparent; color: var(--muted); border: 1.5px solid var(--border); margin-top: 10px; }
-  .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-  .depois-box { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 24px 20px; text-align: center; }
-  .depois-box h3 { font-family: 'Playfair Display', serif; font-size: 18px; margin-bottom: 8px; }
-  .depois-box p { font-size: 14px; color: var(--muted); margin-bottom: 20px; line-height: 1.6; }
-  .link-pagamento { display: block; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); border-radius: 8px; padding: 12px 16px; font-size: 13px; color: var(--gold); font-weight: 600; text-decoration: none; margin-bottom: 12px; }
-  .whatsapp-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: #25D366; color: white; border-radius: 10px; padding: 14px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; text-decoration: none; width: 100%; }
-  footer { text-align: center; padding: 20px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); }
+  .event-box h3 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--white); font-weight: 600; margin-bottom: 6px; line-height: 1.3; }
+  .event-box p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+  .speaker-list { display: flex; flex-direction: column; gap: 14px; margin-top: 16px; }
+  .speaker { display: flex; align-items: flex-start; gap: 12px; }
+  .speaker-icon { width: 38px; height: 38px; border-radius: 8px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.2); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .speaker-info strong { display: block; font-size: 13px; color: var(--white); font-weight: 500; }
+  .speaker-info span { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.5; display: block; margin-top: 2px; }
+  .price-block { text-align: center; padding: 20px; background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; margin-bottom: 16px; }
+  .price-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .price-value { font-family: 'Playfair Display', serif; font-size: 36px; color: var(--text); font-weight: 700; }
+  .price-value sup { font-size: 18px; vertical-align: super; }
+  .confirmation { text-align: center; padding: 20px 0; }
+  .confirmation-icon { font-size: 48px; margin-bottom: 16px; }
+  .confirmation h2 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--text); margin-bottom: 10px; }
+  .confirmation p { font-size: 14px; color: var(--muted); line-height: 1.7; max-width: 380px; margin: 0 auto 24px; }
+  .link-btn { display: block; width: 100%; padding: 14px 20px; border-radius: 10px; font-size: 14px; font-weight: 500; text-align: center; text-decoration: none; transition: all 0.2s; margin-bottom: 10px; }
+  .link-btn-gold { background: var(--gold); color: var(--navy); }
+  .link-btn-gold:hover { background: var(--gold-light); }
+  .link-btn-outline { border: 1.5px solid var(--border); color: var(--text); background: transparent; }
+  .link-btn-outline:hover { border-color: var(--gold); }
+  footer { text-align: center; padding: 24px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); }
 </style>
 </head>
 <body>
+
+<!-- VÍDEO NO TOPO -->
+<div class="video-topo">
+  <div class="video-topo-label">▶ Assista antes de continuar</div>
+  <div class="video-wrapper">
+    <iframe
+      src="https://www.youtube.com/embed/0jQKnu82uFg?rel=0&modestbranding=1"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
 <div class="hero">
   <div class="hero-badge">One America Strategies</div>
-  <h1>Sua empresa pode estar<br><span>deixando dinheiro na mesa</span></h1>
+  <h1>Sua empresa pode estar <span>deixando dinheiro na mesa</span></h1>
   <p>Responda algumas perguntas rápidas e garanta sua vaga em uma oportunidade exclusiva para empresários selecionados.</p>
 </div>
+
 <main>
-  <div class="progress-wrap" id="progressWrap">
-    <div class="progress-bar done" id="p1"></div>
-    <div class="progress-bar" id="p2"></div>
-    <div class="progress-bar" id="p3"></div>
+  <div class="progress-wrap">
+    <div class="progress-bar done" id="bar1"></div>
+    <div class="progress-bar" id="bar2"></div>
+    <div class="progress-bar" id="bar3"></div>
   </div>
 
-  <!-- STEP 1 -->
+  <!-- ETAPA 1 -->
   <div class="step active" id="step1">
     <div class="section-label">Etapa 1 de 3</div>
     <div class="section-title">Fale um pouco sobre você</div>
     <div class="section-desc">Queremos entender seu perfil antes de compartilhar os detalhes desta oportunidade.</div>
-    <div class="field"><label>Nome completo <span>*</span></label><input type="text" id="nome" placeholder="Seu nome"></div>
-    <div class="field"><label>WhatsApp <span>*</span></label><input type="tel" id="whatsapp" placeholder="(00) 00000-0000"></div>
+
+    <div class="field">
+      <label>Nome completo <span>*</span></label>
+      <input type="text" id="nome" placeholder="Seu nome completo">
+    </div>
+    <div class="field">
+      <label>WhatsApp <span>*</span></label>
+      <input type="tel" id="whatsapp" placeholder="+1 (000) 000-0000">
+    </div>
+
     <div class="field">
       <label>Você é empresário(a) ou gestor(a)? <span>*</span></label>
-      <div class="radio-group" id="rg-perfil">
-        <div class="radio-card" onclick="selectCard(this,'perfil','Tenho meu próprio negócio')"><div class="radio-indicator"></div><div class="radio-text"><strong>Sim, tenho meu próprio negócio</strong></div></div>
-        <div class="radio-card" onclick="selectCard(this,'perfil','Sou gestor(a)')"><div class="radio-indicator"></div><div class="radio-text"><strong>Sou gestor(a) em uma empresa</strong></div></div>
-        <div class="radio-card" onclick="selectCard(this,'perfil','Quero empreender')"><div class="radio-indicator"></div><div class="radio-text"><strong>Ainda não, mas quero empreender</strong></div></div>
+      <div class="radio-group" id="perfil">
+        <div class="radio-card" onclick="selectRadio('perfil', this)">
+          <div class="radio-indicator"></div>
+          <div class="radio-text"><strong>Sim, tenho meu próprio negócio</strong></div>
+        </div>
+        <div class="radio-card" onclick="selectRadio('perfil', this)">
+          <div class="radio-indicator"></div>
+          <div class="radio-text"><strong>Sou gestor(a) em uma empresa</strong></div>
+        </div>
+        <div class="radio-card" onclick="selectRadio('perfil', this)">
+          <div class="radio-indicator"></div>
+          <div class="radio-text"><strong>Ainda não, mas quero empreender</strong></div>
+        </div>
       </div>
     </div>
+
     <div class="field">
       <label>Faturamento mensal da empresa <span>*</span></label>
-      <div class="radio-group" id="rg-faturamento">
-        <div class="radio-card" onclick="selectCard(this,'faturamento','Abaixo de R$10.000')"><div class="radio-indicator"></div><div class="radio-text"><strong>Abaixo de R$10.000</strong></div></div>
-        <div class="radio-card" onclick="selectCard(this,'faturamento','R$10.000 a R$50.000')"><div class="radio-indicator"></div><div class="radio-text"><strong>R$10.000 a R$50.000</strong></div></div>
-        <div class="radio-card" onclick="selectCard(this,'faturamento','R$50.000 a R$150.000')"><div class="radio-indicator"></div><div class="radio-text"><strong>R$50.000 a R$150.000</strong></div></div>
-        <div class="radio-card" onclick="selectCard(this,'faturamento','R$150.000 a R$500.000')"><div class="radio-indicator"></div><div class="radio-text"><strong>R$150.000 a R$500.000</strong></div></div>
-        <div class="radio-card" onclick="selectCard(this,'faturamento','Acima de R$500.000')"><div class="radio-indicator"></div><div class="radio-text"><strong>Acima de R$500.000</strong></div></div>
+      <div class="radio-group" id="faturamento">
+        <div class="radio-card" onclick="selectRadio('faturamento', this)">
+          <div class="radio-indicator"></div>
+          <div class="radio-text"><strong>Abaixo de R$10.000</strong></div>
+        </div>
+        <div class="radio-card" onclick="selectRadio('faturamento', this)">
+          <div class="radio-indicator"></div>
+          <div class="radio-text"><strong>R$10.000 a R$50.000</strong></div>
+        </div>
+        <div class="radio-card" onclick="selectRadio('faturamento', this)">
+          <div class="radio-indicator"></div>
+          <div class="radio-text"><strong>R$50.000 a R$150.000</strong></div>
+        </div>
+        <div class="radio-card" onclick="selectRadio('faturamento', this)">
+          <div class="radio-indicator"></div>
+          <div class="radio-text"><strong>R$150.000 a R$500.000</strong></div>
+        </div>
+        <div class="radio-card" onclick="selectRadio('faturamento', this)">
+          <div class="radio-indicator"></div>
+          <div class="radio-text"><strong>Acima de R$500.000</strong></div>
+        </div>
       </div>
     </div>
+
     <div class="field">
       <label>Situação com visto americano <span>*</span></label>
-      <div class="radio-group" id="rg-visto">
-        <div class="radio-card" onclick="selectCard(this,'visto','Já tenho visto e estou regularizado')"><div class="radio-indicator"></div><div class="radio-text"><strong>✅ Já tenho visto e estou regularizado</strong></div></div>
-        <div class="radio-card" onclick="selectCard(this,'visto','Estou em processo de regularização')"><div class="radio-indicator"></div><div class="radio-text"><strong>🔄 Estou em processo de regularização</strong></div></div>
-        <div class="radio-card" onclick="selectCard(this,'visto','Preciso de consultoria sobre visto')"><div class="radio-indicator"></div><div class="radio-text"><strong>📋 Preciso de consultoria sobre visto</strong></div></div>
+      <div class="radio-group" id="visto">
+        <div class="radio-card" onclick="selectRadio('visto', this)">
+          <div class="radio-indicator"></div>
+          <div class="radio-text"><strong>✅ Já tenho visto e estou regularizado</strong></div>
+        </div>
+        <div class="radio-card" onclick="selectRadio('visto', this)">
+          <div class="radio-indicator"></div>
+          <div class="radio-text"><strong>🔄 Estou em processo de regularização</strong></div>
+        </div>
+        <div class="radio-card" onclick="selectRadio('visto', this)">
+          <div class="radio-indicator"></div>
+          <div class="radio-text"><strong>📋 Preciso de consultoria sobre visto</strong></div>
+        </div>
       </div>
     </div>
-    <button class="btn" onclick="nextStep1()">Continuar →</button>
+
+    <button class="btn btn-primary" onclick="goTo(2)">Continuar →</button>
   </div>
 
-  <!-- STEP 2 -->
+  <!-- ETAPA 2 -->
   <div class="step" id="step2">
     <div class="section-label">Etapa 2 de 3</div>
     <div class="section-title">O que mais chamaria sua atenção?</div>
     <div class="section-desc">Estamos sondando o interesse de empresários em participar de um encontro fechado com lideranças políticas e estrategistas de negócios.</div>
-    <div class="field">
-      <div class="radio-group" id="rg-interesse">
-        <div class="radio-card" onclick="selectCard(this,'interesse','Cenário político e impacto no negócio')"><div class="radio-indicator"></div><div class="radio-text"><strong>Entender o cenário político e como ele afeta meu negócio</strong></div></div>
-        <div class="radio-card" onclick="selectCard(this,'interesse','Estratégias de crescimento')"><div class="radio-indicator"></div><div class="radio-text"><strong>Estratégias para crescer e me destacar no mercado</strong></div></div>
-        <div class="radio-card" onclick="selectCard(this,'interesse','Networking com líderes')"><div class="radio-indicator"></div><div class="radio-text"><strong>Networking com outros empresários e líderes</strong></div></div>
-        <div class="radio-card" onclick="selectCard(this,'interesse','Tudo isso junto')"><div class="radio-indicator"></div><div class="radio-text"><strong>Tudo isso junto</strong></div></div>
+
+    <div class="radio-group" id="interesse">
+      <div class="radio-card" onclick="selectRadio('interesse', this)">
+        <div class="radio-indicator"></div>
+        <div class="radio-text"><strong>Entender o cenário político e como ele afeta meu negócio</strong></div>
+      </div>
+      <div class="radio-card" onclick="selectRadio('interesse', this)">
+        <div class="radio-indicator"></div>
+        <div class="radio-text"><strong>Estratégias para crescer e me destacar no mercado</strong></div>
+      </div>
+      <div class="radio-card" onclick="selectRadio('interesse', this)">
+        <div class="radio-indicator"></div>
+        <div class="radio-text"><strong>Networking com outros empresários e líderes</strong></div>
+      </div>
+      <div class="radio-card" onclick="selectRadio('interesse', this)">
+        <div class="radio-indicator"></div>
+        <div class="radio-text"><strong>Tudo isso junto</strong></div>
       </div>
     </div>
-    <button class="btn" onclick="nextStep2()">Ver a oportunidade →</button>
-    <button class="btn btn-ghost" onclick="goStep(1)">← Voltar</button>
+
+    <button class="btn btn-primary" onclick="goTo(3)">Ver a oportunidade →</button>
+    <button class="btn btn-secondary" onclick="goTo(1)">← Voltar</button>
   </div>
 
-  <!-- STEP 3 -->
+  <!-- ETAPA 3 -->
   <div class="step" id="step3">
     <div class="section-label">Etapa 3 de 3</div>
     <div class="section-title">Aqui está a oportunidade</div>
     <div class="section-desc">Conheça a One America Strategies e garanta sua vaga na live exclusiva:</div>
-    <a href="https://oneamericastrategies.com" target="_blank" class="oas-link">
-      <div class="oas-link-icon">🌐</div>
-      <div class="oas-link-text"><strong>One America Strategies</strong><span>Clique para conhecer nossa empresa →</span></div>
-    </a>
-    <div class="event-box">
-      <div class="event-box-tag">Evento exclusivo · Dia 15</div>
-      <div class="event-box-title">Live fechada com vereador<br>e estrategista de negócios</div>
-      <div class="event-box-date">Uma sessão ao vivo, exclusiva para empresários selecionados</div>
-      <div class="event-speakers">
-        <div class="speaker"><div class="speaker-icon">🏛</div><div class="speaker-info"><strong>Vereador</strong><span>Panorama político e oportunidades para o setor empresarial</span></div></div>
-        <div class="speaker"><div class="speaker-icon">📈</div><div class="speaker-info"><strong>Estrategista de Negócios</strong><span>One America Strategies — como posicionar e expandir sua empresa</span></div></div>
-      </div>
-    </div>
-    <div class="price-row"><span class="price-label">Investimento para participar</span><span class="price-value"><sup>$</sup>67</span></div>
-    <div class="radio-group" id="rg-pagamento" style="margin-bottom:20px;">
-      <div class="radio-card" onclick="selectCard(this,'pagamento','agora')"><div class="radio-indicator"></div><div class="radio-text"><strong>Quero pagar agora</strong><small>Clique e garanta sua vaga imediatamente</small></div></div>
-      <div class="radio-card" onclick="selectCard(this,'pagamento','whatsapp')"><div class="radio-indicator"></div><div class="radio-text"><strong>Falar com a equipe no WhatsApp</strong><small>Tire suas dúvidas antes de confirmar</small></div></div>
-    </div>
-    <button class="btn" onclick="submitForm()">Confirmar →</button>
-    <button class="btn btn-ghost" onclick="goStep(2)">← Voltar</button>
-  </div>
 
-  <!-- STEP DEPOIS -->
-  <div class="step" id="stepDepois">
-    <div class="depois-box">
-      <div style="font-size:36px;margin-bottom:12px;">🙏</div>
-      <h3>Que bom que tem interesse!</h3>
-      <p>Sua vaga está reservada. Faça o pagamento quando estiver pronto — vagas são limitadas!</p>
-      <a href="https://mpago.la/1crQuV6" target="_blank" class="link-pagamento">🔗 Link de pagamento — $67</a>
-      <a href="https://wa.me/17549712912" target="_blank" class="whatsapp-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Falar no WhatsApp
+    <div style="margin-bottom:20px;">
+      <a href="https://oneamericastrategies.com" target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--white);border:1.5px solid var(--border);border-radius:10px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'">
+        <span style="font-size:20px;">🌐</span>
+        <div>
+          <strong style="display:block;font-size:14px;">One America Strategies</strong>
+          <span style="font-size:12px;color:var(--muted);">Clique para conhecer nossa empresa →</span>
+        </div>
       </a>
     </div>
+
+    <div class="event-box">
+      <div class="event-box-tag">Evento exclusivo · Dia 15</div>
+      <h3>Live fechada com vereador<br>e estrategista de negócios</h3>
+      <p>Uma sessão ao vivo, exclusiva para empresários selecionados</p>
+      <div class="speaker-list">
+        <div class="speaker">
+          <div class="speaker-icon">🏛</div>
+          <div class="speaker-info">
+            <strong>Vereador</strong>
+            <span>Panorama político e oportunidades para o setor empresarial</span>
+          </div>
+        </div>
+        <div class="speaker">
+          <div class="speaker-icon">📈</div>
+          <div class="speaker-info">
+            <strong>Estrategista de Negócios</strong>
+            <span>One America Strategies — como posicionar e expandir sua empresa</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-block">
+      <div class="price-label">Investimento para participar</div>
+      <div class="price-value"><sup>$</sup>67</div>
+    </div>
+
+    <button class="btn btn-primary" onclick="goTo(4)">Quero pagar agora</button>
+    <a href="https://wa.me/17549712912" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;text-decoration:none;margin-top:12px;">Falar com a equipe no WhatsApp</a>
+    <button class="btn btn-secondary" onclick="goTo(2)">← Voltar</button>
   </div>
+
+  <!-- CONFIRMAÇÃO -->
+  <div class="step" id="step4">
+    <div class="confirmation">
+      <div class="confirmation-icon">🙏</div>
+      <h2>Que bom que tem interesse!</h2>
+      <p>Sua vaga está reservada. Faça o pagamento quando estiver pronto — vagas são limitadas!</p>
+      <a href="https://mpago.la/1crQuV6" target="_blank" class="link-btn link-btn-gold">🔗 Link de pagamento — $67</a>
+      <a href="https://wa.me/17549712912" target="_blank" class="link-btn link-btn-outline">Falar no WhatsApp</a>
+    </div>
+  </div>
+
 </main>
+
 <footer>© 2025 One America Strategies · Suas informações são confidenciais</footer>
+
 <script>
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwV9MVhXry3BHGf1DMGK4kSu5pA6jcNywNqgSU6W0cizdmdiJoihr0NZH2kE3xN08eE0w/exec';
-  const vals = { perfil: '', faturamento: '', visto: '', interesse: '', pagamento: '' };
-
-  function selectCard(el, group, value) {
-    document.querySelectorAll('#rg-' + group + ' .radio-card').forEach(c => c.classList.remove('selected'));
+  function selectRadio(group, el) {
+    document.querySelectorAll('#' + group + ' .radio-card').forEach(c => c.classList.remove('selected'));
     el.classList.add('selected');
-    vals[group] = value;
   }
 
-  function goStep(n) {
+  function goTo(step) {
     document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-    document.getElementById('step' + n).classList.add('active');
-    for (let i = 1; i <= 3; i++) { const b = document.getElementById('p' + i); if (b) b.classList.toggle('done', i <= n); }
+    document.getElementById('step' + step).classList.add('active');
+    document.getElementById('bar1').classList.toggle('done', step >= 1);
+    document.getElementById('bar2').classList.toggle('done', step >= 2);
+    document.getElementById('bar3').classList.toggle('done', step >= 3);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  function nextStep1() {
-    const nome = document.getElementById('nome').value.trim();
-    const whatsapp = document.getElementById('whatsapp').value.trim();
-    if (!nome || !whatsapp || !vals.perfil || !vals.faturamento || !vals.visto) { alert('Por favor, preencha todos os campos.'); return; }
-    goStep(2);
-  }
-
-  function nextStep2() {
-    if (!vals.interesse) { alert('Por favor, selecione uma opção.'); return; }
-    goStep(3);
-  }
-
-  function submitForm() {
-    if (!vals.pagamento) { alert('Por favor, selecione uma opção de pagamento.'); return; }
-    const nome = document.getElementById('nome').value.trim();
-    const whatsapp = document.getElementById('whatsapp').value.trim();
-    fetch(SCRIPT_URL, {
-      method: 'POST', mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nome, whatsapp, perfil: vals.perfil, faturamento: vals.faturamento, visto: vals.visto, interesse: vals.interesse, confirma: vals.pagamento === 'agora' ? 'Pagar agora' : 'Pagar depois' })
-    }).finally(() => {
-      if (vals.pagamento === 'agora') {
-        window.location.href = 'https://mpago.la/1crQuV6';
-      } else {
-        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-        document.getElementById('progressWrap').style.display = 'none';
-        document.getElementById('stepDepois').classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    });
   }
 </script>
 </body>
